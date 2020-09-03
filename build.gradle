@@ -1,0 +1,36 @@
+buildscript {
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.10.RELEASE"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.3.3.RELEASE'
+}
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.yo.prototype'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Hoxton.SR8'
+    }
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.solace.spring.cloud/spring-cloud-starter-stream-solace
+    compile group: 'com.solace.spring.cloud', name: 'spring-cloud-starter-stream-solace', version: '2.1.1'
+
+    // https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-stream
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-stream', version: '3.0.8.RELEASE'
+
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
