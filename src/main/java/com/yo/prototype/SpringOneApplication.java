@@ -13,10 +13,18 @@ public class SpringOneApplication {
     }
 
     @Bean
-    public Function<String, String> upperCase() {
+    public Function<String, String> uppercase() {
         return s -> {
             System.out.println(s.toUpperCase());
             return s.toUpperCase();
+        };
+    }
+
+    @Bean
+    public Function<String, String> reverse() {
+        return s -> {
+            System.out.println("Reversing");
+            return new StringBuilder(s).reverse().toString();
         };
     }
 }
